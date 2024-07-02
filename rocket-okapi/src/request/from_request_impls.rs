@@ -200,8 +200,8 @@ impl<'r> OpenApiFromRequest<'r> for rocket_dyn_templates::Metadata<'r> {
     }
 }
 
-#[cfg(feature = "rocket_sync_db_pools")]
-impl<'r> OpenApiFromRequest<'r> for rocket_sync_db_pools::example::ExampleDb {
+#[cfg(all(nightly,feature = "rocket_sync_db_pools"))]
+impl<'r> OpenApiFromRequest<'r> for rocket_sync_db_pools::example::ExampleDb{
     fn from_request_input(_gen: &mut OpenApiGenerator, _name: String, _required: bool) -> Result {
         Ok(RequestHeaderInput::None)
     }
